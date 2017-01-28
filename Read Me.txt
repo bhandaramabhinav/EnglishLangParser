@@ -1,0 +1,59 @@
+1. File Name: ExtendedNCG.pl
+-------------------------------------------------------------------------------------------------------------------------------------------
+2. Primitive Types Used:
+			Noun Phrase-NP
+			Noun:- N
+			Sentence:- S.
+-------------------------------------------------------------------------------------------------------------------------------------------
+3. Application Rules Used: 
+			A,A\B-->B
+			A/B,B-->B
+			Reference Sourse: Wikki Page for categorial grammars (https://en.wikipedia.org/wiki/Categorial_grammar).
+-------------------------------------------------------------------------------------------------------------------------------------------
+4. Used "iis" in place of "is" as "is" ia a reserved keyword in prolog.
+-------------------------------------------------------------------------------------------------------------------------------------------
+5. Sample Input:
+	
+			sent-->the,bad,boy,runs.
+			sent-->the,bad,boy,made,that,mess.
+			sent-->she,loves,animals.
+			sent-->the,old,man,kicked,a,ball,in,the,park.
+			sent-->he,iis,a,bad,boy.
+			sent-->mary,walks,if,john,walks.
+
+			%negative test cases
+			sent1-->she,animals,loves.
+			sent2-->boy,bad,he,iis.
+-------------------------------------------------------------------------------------------------------------------------------------------
+6. Steps to execute:
+	Load the file and run the "go" command, use semicolon to backtrack and check for different string inputs.
+-------------------------------------------------------------------------------------------------------------------------------------------
+7. Output:
+		38 ?- go.
+			[np/n,n/n,n,np\s]
+			true ;
+			[np/n,n/n,n, (np\s)/np,np/n,n]
+			true ;
+			[np, (np\s)/np,np]
+			true ;
+			[np/n,n/n,n, (np\s)/np,np/n,n, (np\np)/np,np/n,n]
+			true ;
+			[np, (np\s)/np,np/n,n/n,n]
+			true ;
+			[np,np\s, (s\s)/s,np,np\s]
+			true ;
+			false.
+-------------------------------------------------------------------------------------------------------------------------------------------
+8. Steps to execute:- Load the prolog file and hit run.
+-------------------------------------------------------------------------------------------------------------------------------------------
+9. New Categories Added:
+			determines.
+			transitive verbs.
+			intransitive verbs.
+			auxillary verbs.
+			conjuctions.
+			prepositions.
+-------------------------------------------------------------------------------------------------------------------------------------------
+10. Group Member: Riley and Abhinav.
+-------------------------------------------------------------------------------------------------------------------------------------------
+11. Language Used: Prolog.
